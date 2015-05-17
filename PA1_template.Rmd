@@ -114,3 +114,23 @@ Implication of imputing missing values:
 2. Adding the average interval value for missing values makes the mean and median converge (i.e they are the same) and the Histogram shows a normal distribution
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+Replace days of week with 'Weekday' or 'Weekend'
+
+```{r}
+activity_impute_tbl$day <- ifelse(activity_impute_tbl$day 
+                                  %in% c("Saturday", "Sunday"),
+                                  "Weekend", "Weekday")
+```
+
+Aggregate mean and plot time series 
+
+```{r}
+Avg_steps_by_interval_imputed <- aggregate(steps.x ~ interval + day, 
+                                   activity_impute_tbl, mean)
+
+ggplot(Avg_steps_by_interval_imputed, aes(x=interval,y=steps.x)) + 
+  geom_line(color="purple",size=1) + 
+  facet_wrap(~day, nrow=2, ncol=1) + 
+  labs(x="Interval",y="Number of Steps") 
+```
