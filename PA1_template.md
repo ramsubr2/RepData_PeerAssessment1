@@ -210,3 +210,7 @@ ggplot(Avg_steps_by_interval_imputed, aes(x=interval,y=steps.x)) +
 ```
 
 ![](./PA1_template_files/figure-html/unnamed-chunk-12-1.png) 
+
+Yes, there is a difference in the activity pattern between weekdays and weekends.
+1. During Weekdays, there is more activity in the early part of the day, followed by a lull in activity (presumably, everyone is at work) and the activity picks up again towards the end of the day
+2. During weekends, there is also more activity during the early part of the day but the activity level is sustained throughout the day as people are going about finishing their chores or just being more active.
